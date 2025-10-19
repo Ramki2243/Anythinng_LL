@@ -33,8 +33,11 @@
     "start:all": "concurrently \"yarn dev:server\" \"yarn start:frontend\" \"yarn dev:collector\""
   },
   "private": false,
-    "dependencies": {
-    "concurrently": "^9.2.1"
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.10"
   },
   "devDependencies": {
     "jest": "^29.7.0"

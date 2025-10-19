@@ -10,3 +10,27 @@ aws_cf_deploy_anything_llm.json
 yarn.lock
 *.bak
 .idea
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Env files
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Build outputs
+dist/
+build/
+
+# VSCode / Devcontainers
+.vscode/
+.devcontainer/
+
+# OS files
+.DS_Store
+Thumbs.db

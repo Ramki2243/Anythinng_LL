@@ -1,22 +1,25 @@
-# Use Node 20 instead of 18
-FROM node:20-alpine
+# Stage 1: Build frontend
+FROM node:20-alpine AS frontend-build
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN yarn install
+COPY frontend . 
+RUN yarn build
 
+# Stage 2: Build server
+FROM node:20-alpine
 WORKDIR /app
 
-COPY . .
-
-# Install dependencies
+# Copy root package.json and install server deps
+COPY package*.json ./
 RUN yarn install --production
 
-# Build frontend
-WORKDIR /app/frontend
-RUN yarn install && yarn build
+# Copy server code
+COPY server ./server
+COPY collector ./collector
 
-# Back to root
-WORKDIR /app
+# Copy built frontend from stage 1
+COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 
-# Expose backend port
 EXPOSE 3001
-
-# Start backend server
 CMD ["yarn", "prod:server"]

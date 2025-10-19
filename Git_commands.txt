@@ -1,0 +1,119 @@
+Perfect timing, Ramakrishnan — Git is one of those tools where having a **mental map of commands + when to use them** makes life so much easier. Let’s build you a **step‑by‑step Git flow guide** with the most important commands, grouped by what stage you’re in.  
+
+---
+
+# 🧭 Git Commands & When to Use Them
+
+## 1. 🔧 Setup & Configuration
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git config --global user.name "Your Name"` | Sets your name for commits | First time setup |
+| `git config --global user.email "you@example.com"` | Sets your email | First time setup |
+| `git config --list` | Shows current config | To verify your setup |
+
+---
+
+## 2. 📂 Starting a Project
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git init` | Creates a new Git repo in current folder | Starting a brand‑new project |
+| `git clone <url>` | Copies a repo from GitHub/GitLab | When joining an existing project |
+
+---
+
+## 3. 📌 Tracking Changes
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git status` | Shows changed files | Before committing, to see what’s new |
+| `git add <file>` | Stages a file for commit | When you want to include a file in the next commit |
+| `git add .` | Stages all changes | Quick way to stage everything |
+| `git reset <file>` | Unstages a file | If you added by mistake |
+
+---
+
+## 4. 💾 Saving Work
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git commit -m "message"` | Saves staged changes | After `git add`, to record a snapshot |
+| `git commit --amend` | Edit last commit | If you forgot a file or typo in message |
+
+---
+
+## 5. 🌿 Branching & Switching
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git branch` | Lists branches | To see where you are |
+| `git branch <name>` | Creates a new branch | Starting a new feature |
+| `git checkout <name>` | Switches branch | Moving between tasks |
+| `git checkout -b <name>` | Create + switch | Faster way to start a new branch |
+| `git switch <name>` | Modern way to switch | Same as checkout but clearer |
+
+---
+
+## 6. 🔀 Merging & Rebasing
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git merge <branch>` | Combines another branch into current | After finishing a feature |
+| `git rebase <branch>` | Replays commits on top of another | To keep history clean (advanced) |
+| `git cherry-pick <commit>` | Apply one commit from another branch | If you only need a specific fix |
+
+---
+
+## 7. 🌍 Working with Remotes
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git remote -v` | Shows linked remotes | To check GitHub URL |
+| `git pull` | Fetch + merge from remote | To update your branch |
+| `git fetch` | Download changes without merging | To inspect before merging |
+| `git push` | Upload commits to remote | After committing locally |
+| `git push -u origin <branch>` | Push new branch & set tracking | First time pushing a branch |
+
+---
+
+## 8. 🕒 History & Inspection
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git log` | Shows commit history | To review past work |
+| `git log --oneline --graph` | Compact history with branches | To visualize branching |
+| `git diff` | Shows unstaged changes | Before staging |
+| `git diff --staged` | Shows staged changes | Before committing |
+
+---
+
+## 9. 🛟 Undoing Mistakes
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git restore <file>` | Discard changes in working dir | If you want to undo edits |
+| `git reset --hard HEAD` | Reset everything to last commit | To throw away all changes |
+| `git revert <commit>` | Create new commit that undoes another | To safely undo in shared history |
+
+---
+
+## 10. 📦 Stashing (Temporary Save)
+| Command | Use | When to Use |
+|---------|-----|-------------|
+| `git stash` | Save changes without committing | If you need to switch branches quickly |
+| `git stash pop` | Reapply stashed changes | When you return to your work |
+
+---
+
+# 🚀 Typical Git Flow (What to Use When)
+1. **Start work** → `git pull` (get latest code)  
+2. **Create branch** → `git checkout -b feature-x`  
+3. **Make changes** → `git add .` → `git commit -m "message"`  
+4. **Push branch** → `git push -u origin feature-x`  
+5. **Open Pull Request** on GitHub  
+6. **Merge into main** → `git checkout main` → `git pull` → `git merge feature-x`  
+7. **Clean up** → `git branch -d feature-x`  
+
+---
+
+👉 Ramakrishnan, since you’re working on **AnythingLLM + Railway deployment**, the most useful commands for you day-to-day will be:
+- `git add .` + `git commit -m "message"` (save changes)
+- `git push` (send to GitHub so Railway can deploy)
+- `git pull` (sync your local repo with GitHub)
+- `git checkout -b <branch>` (experiment safely without breaking main)
+
+---
+
+Would you like me to create a **visual Git flow diagram** (step-by-step arrows) so you can see how `clone → branch → commit → push → merge` fits together?

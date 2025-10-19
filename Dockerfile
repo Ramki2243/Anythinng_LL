@@ -26,24 +26,42 @@
 
 FROM node:20-alpine
 
+# # Set working directory
+# WORKDIR /app
+
+# # Copy everything
+# COPY . .
+
+# # Install root dependencies
+# RUN yarn install --production
+
+# # Build frontend
+# WORKDIR /app/frontend
+# RUN yarn install && yarn build
+
+# # Go back to root
+# WORKDIR /app
+
+# # Expose backend port (AnythingLLM server runs on 3001)
+# EXPOSE 3001
+
+# # Start the backend server in production mode
+# CMD ["yarn", "prod:server"]
+
+# FROM node:18-alpine
+
 # Set working directory
 WORKDIR /app
 
-# Copy everything
-COPY . .
-
-# Install root dependencies
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN yarn install --production
 
-# Build frontend
-WORKDIR /app/frontend
-RUN yarn install && yarn build
+# Copy the rest of the project
+COPY . .
 
-# Go back to root
-WORKDIR /app
-
-# Expose backend port (AnythingLLM server runs on 3001)
+# Expose the app port
 EXPOSE 3001
 
-# Start the backend server in production mode
-CMD ["yarn", "prod:server"]
+# Start the app (adjust if your start script is different)
+CMD ["yarn", "start:all"]

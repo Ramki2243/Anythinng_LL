@@ -1,13 +1,17 @@
 FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
 
-COPY anything-llm/package*.json ./anything-llm/
-WORKDIR /app/anything-llm
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN yarn install --production
 
-COPY anything-llm/. .
+# Copy the rest of the project
+COPY . .
 
+# Expose the app port
 EXPOSE 3000
 
+# Start the app (adjust if your start script is different)
 CMD ["yarn", "start:all"]
